@@ -40,6 +40,10 @@ public abstract class Menu
         set
         {
             _orderCount = value;
+            if(_orderCount < 0)
+            {
+                _orderCount = 0;
+            }
         }
     }
 
