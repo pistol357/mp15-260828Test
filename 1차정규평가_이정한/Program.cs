@@ -52,8 +52,7 @@ class Program
             }
             else if (action == (int)CustomerActionList.CloseCafe)
             {
-                Console.WriteLine($"총 주문 건수 : {cafe.OrderTimes}");
-                Console.WriteLine($"총 매출액 : {cafe.TotalSales}");
+                cafe.CloseCafe();
                 return;
             }
 

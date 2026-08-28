@@ -37,4 +37,10 @@ public sealed class Cafe
         Console.WriteLine($"{CAFE_NAME} 주문 키오스크");
         Console.WriteLine("----------------------------------------");
     }
+
+    public void CloseCafe()
+    {
+        Console.WriteLine($"총 주문 건수 : {_orderTimes}");
+        Console.WriteLine($"총 매출액 : {_totalSales}");
+    }
 }
