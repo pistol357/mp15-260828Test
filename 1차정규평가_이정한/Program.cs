@@ -11,8 +11,7 @@ class Program
     {
         Cafe cafe = new Cafe();
 
-        MenuList menuList = new MenuList();
-        menuList.SetMenuListSize(MENU_COUNT);
+        MenuList menuList = new MenuList(MENU_COUNT);
         menuList.AddMenu(new Drink("아메리카노", 5000));
         menuList.AddMenu(new Drink("카라멜 마끼아또", 6000));
         menuList.AddMenu(new Drink("아이스티", 5000));
