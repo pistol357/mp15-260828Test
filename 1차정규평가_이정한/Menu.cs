@@ -30,6 +30,14 @@ public abstract class Menu
         }
     }
 
+    public int OrderCount
+    {
+        get
+        {
+            return _orderCount;
+        }
+    }
+
     public Menu(string name, int price, MenuType menuType)
     {
         _name = name;
