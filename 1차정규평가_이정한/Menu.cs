@@ -38,8 +38,9 @@ public abstract class Menu
         }
     }
 
-    public Menu(string name, int price, MenuType menuType)
+    public Menu(int id, string name, int price, MenuType menuType)
     {
+        _id = id;
         _name = name;
         _price = price;
         _menuType = menuType;
