@@ -1,6 +1,7 @@
 ﻿
-public class Cafe
+public sealed class Cafe
 {
+    const string CAFE_NAME = "정한 카페";
     private int _totalSales;
     private int _orderTimes;
 
@@ -28,5 +29,12 @@ public class Cafe
         {
             _orderTimes = value;
         }
+    }
+
+    public void PrintCafeName()
+    {
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine($"{CAFE_NAME} 주문 키오스크");
+        Console.WriteLine("----------------------------------------");
     }
 }

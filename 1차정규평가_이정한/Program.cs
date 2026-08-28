@@ -4,7 +4,6 @@ using System;
 
 class Program
 {
-    const string CAFE_NAME = "정한 카페";
     const int MENU_COUNT = 6;
 
     static void Main(string[] args)
@@ -24,7 +23,7 @@ class Program
         while (true)
         {
             Console.Clear();
-            PrintCafeName();
+            cafe.PrintCafeName();
             menuList.PrintMenuList();
             cart.PrintCart();
             int action = PrintCustomerAction();
@@ -63,13 +62,6 @@ class Program
             }
             ConsoleInput.Pause();
         }
-    }
-
-    public static void PrintCafeName()
-    {
-        Console.WriteLine("----------------------------------------");
-        Console.WriteLine($"{CAFE_NAME} 주문 키오스크");
-        Console.WriteLine("----------------------------------------");
     }
 
     public static int PrintCustomerAction()
