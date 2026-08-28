@@ -24,6 +24,7 @@ public class MenuList
             return;
         }
         _menuList[Count] = menu;
+        _count++;
     }
 
     public Menu GetMenu(int index)
@@ -34,7 +35,7 @@ public class MenuList
     public void PrintMenuList()
     {
         Console.WriteLine("[메뉴판]");
-        for(int i = 1; i <= _menuList.Length; i++)
+        for(int i = 1; i <= Count; i++)
         {
             Menu menu = _menuList[i - 1];
             Console.WriteLine($"  {i}. {menu.Name} ({menu.MenuType})  {menu.Price}원");
