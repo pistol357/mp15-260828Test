@@ -15,9 +15,22 @@ public class Cart<T> where T : Menu
     public void AddMenuToCart(MenuList menuList, int menuNumber, int menuCount)
     {
         T menu = (T)menuList.GetMenu(menuNumber - 1);
-        _cart.Add(menu);
-        menu.OrderCount += menuCount;
-        _totalCost += menu.ReturnPrice();
+        if (_cart.Contains(menu))
+        {
+            menu.OrderCount += menuCount;
+        }
+        else
+        {
+            _cart.Add(menu);
+            menu.OrderCount += menuCount;
+        }
+
+        int cost = 0;
+        foreach(T item in _cart)
+        {
+            cost += item.ReturnPrice();
+        }
+        _totalCost = cost;
     }
 
     public void ClearCart()
