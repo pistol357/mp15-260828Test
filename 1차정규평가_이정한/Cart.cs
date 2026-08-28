@@ -1,7 +1,7 @@
 ﻿
-public class Cart
+public class Cart<T> where T : Menu
 {
-    private List<Menu> _cart = new();
+    private List<T> _cart = new();
     private int _totalCost = 0;
 
     public int TotalCost
@@ -14,7 +14,7 @@ public class Cart
 
     public void AddMenuToCart(MenuList menuList, int menuNumber, int menuCount)
     {
-        Menu menu = menuList.GetMenu(menuNumber - 1);
+        T menu = (T)menuList.GetMenu(menuNumber - 1);
         _cart.Add(menu);
         menu.OrderCount += menuCount;
         _totalCost += menu.ReturnPrice();
