@@ -52,6 +52,6 @@ public abstract class Menu
 
     public virtual int ReturnPrice()
     {
-        return Price;
+        return _price * _orderCount;
     }
 }
