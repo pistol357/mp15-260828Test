@@ -52,11 +52,7 @@ public class Cart<T> where T : Menu
 
     public bool IsCartEmpty()
     {
-        if( _cart.Count == 0 )
-        {
-            return true;
-        }
-        return false;
+        return _cart.Count == 0;
     }
 
     public void Pay(Cafe cafe, int moeny)
