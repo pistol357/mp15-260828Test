@@ -40,5 +40,6 @@ public class MenuList
             Menu menu = _menuList[i - 1];
             Console.WriteLine($"  {i}. {menu.Name} ({menu.MenuType})  {menu.Price}원");
         }
+        Console.WriteLine("----------------------------------------");
     }
 }
