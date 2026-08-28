@@ -5,7 +5,7 @@ using System;
 class Program
 {
     const string CAFE_NAME = "정한 카페";
-    const int MENU_COUNT = 5;
+    const int MENU_COUNT = 6;
 
     static void Main(string[] args)
     {
@@ -31,7 +31,7 @@ class Program
 
             if (action == (int)CustomerActionList.AddMenuToCart)
             {
-                int menuToCart = ConsoleInput.ReadIntInRange("장바구니에 담을 메뉴를 선택해주세요. : ", 1, 5);
+                int menuToCart = ConsoleInput.ReadIntInRange("장바구니에 담을 메뉴를 선택해주세요. : ", 1, MENU_COUNT);
                 int menuToCartCount = ConsoleInput.ReadIntAtLeast("몇 개 담을까요? : ", 0);
                 cart.AddMenuToCart(menuList, menuToCart, menuToCartCount);
             }
