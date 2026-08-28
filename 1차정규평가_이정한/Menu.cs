@@ -54,4 +54,9 @@ public abstract class Menu
     {
         return _price * _orderCount;
     }
+
+    public virtual void PrintMenuInfo()
+    {
+        Console.WriteLine($"{Name} ({MenuType})  {Price}원");
+    }
 }
