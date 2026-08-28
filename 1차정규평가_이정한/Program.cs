@@ -5,13 +5,22 @@ using System;
 class Program
 {
     const string CAFE_NAME = "정한 카페";
+    const int MENU_COUNT = 5;
 
     static void Main(string[] args)
     {
         while (true)
         {
+            PrintCafeName();
             PrintCustomerAction();
         }
+    }
+
+    public static void PrintCafeName()
+    {
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine($"{CAFE_NAME} 주문 키오스크");
+        Console.WriteLine("----------------------------------------");
     }
 
     public static void PrintCustomerAction()
