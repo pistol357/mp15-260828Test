@@ -34,6 +34,19 @@ class Program
                 int menuToCartCount = ConsoleInput.ReadIntAtLeast("몇 개 담을까요? : ", 0);
                 cart.AddMenuToCart(menuList, menuToCart, menuToCartCount);
             }
+            else if (action == (int)CustomerActionList.RemoveMenuFromCart)
+            {
+                if (!cart.IsCartEmpty())
+                {
+                    int menuFromCart = ConsoleInput.ReadIntInRange("장바구니에서 뺄 메뉴를 선택해주세요. : ", 1, MENU_COUNT);
+                    int menuFromCartCount = ConsoleInput.ReadIntAtLeast("몇 개 뺄까요? : ", 0);
+                    cart.RemoveMenuFromCart(menuList, menuFromCart, menuFromCartCount);
+                }
+                else
+                {
+                    Console.WriteLine("장바구니가 비어있습니다.");
+                }
+            }
             else if (action == (int)CustomerActionList.ClearCart)
             {
                 cart.ClearCart();
@@ -62,8 +75,31 @@ class Program
 
     public static int PrintCustomerAction()
     {
-        Console.WriteLine("1. 장바구니에 메뉴 담기   2. 장바구니 전체 비우기   3. 결제   4. 영업 종료");
-        int action = ConsoleInput.ReadIntInRange("무엇을 원하시나요? : ", 1, 4);
+        for(int i = 1; i <= (int)CustomerActionList.CloseCafe; i++)
+        {
+            switch ((CustomerActionList)i)
+            {
+                case CustomerActionList.AddMenuToCart:
+                    Console.WriteLine($"  {i}. 장바구니에 담기");
+                    break;
+                case CustomerActionList.RemoveMenuFromCart:
+                    Console.WriteLine($"  {i}. 장바구니에서 빼기");
+                    break;
+                case CustomerActionList.ClearCart:
+                    Console.WriteLine($"  {i}. 장바구니 비우기");
+                    break;
+                case CustomerActionList.Pay:
+                    Console.WriteLine($"  {i}. 결제");
+                    break;
+                case CustomerActionList.CloseCafe:
+                    Console.WriteLine($"  {i}. 영업 종료");
+                    break;
+                default:
+                    break;
+            }
+        }
+       
+        int action = ConsoleInput.ReadIntInRange("무엇을 원하시나요? : ", 1, (int)CustomerActionList.CloseCafe);
         return action;
     }
 }
