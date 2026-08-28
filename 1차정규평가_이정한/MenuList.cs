@@ -34,9 +34,10 @@ public class MenuList
     public void PrintMenuList()
     {
         Console.WriteLine("[메뉴판]");
-        foreach(Menu menu in _menuList)
+        for(int i = 1; i <= _menuList.Length; i++)
         {
-            Console.WriteLine($"  {menu.ID}. {menu.Name} ({menu.MenuType})  {menu.Price}원");
+            Menu menu = _menuList[i];
+            Console.WriteLine($"  {i}. {menu.Name} ({menu.MenuType})  {menu.Price}원");
         }
     }
 }
