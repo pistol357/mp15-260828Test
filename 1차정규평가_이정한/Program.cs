@@ -17,6 +17,7 @@ class Program
         menuList.AddMenu(new Drink("아이스티", 5000));
         menuList.AddMenu(new Dessert("티라미수", 3800));
         menuList.AddMenu(new Dessert("쿠키", 1000));
+        menuList.AddMenu(new Goods("텀블러", 7000));
 
         Cart<Menu> cart = new Cart<Menu>();
 
