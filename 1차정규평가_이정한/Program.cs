@@ -60,6 +60,7 @@ class Program
                 Console.WriteLine($"총 매출액 : {cafe.TotalSales}");
                 return;
             }
+
             ConsoleInput.Pause();
         }
     }
