@@ -1,4 +1,5 @@
-﻿public class Cafe
+﻿
+public class Cafe
 {
     private int _totalSales;
     private int _orderTimes;
