@@ -1,5 +1,5 @@
 ﻿
 public class Americano : Menu
 {
-    public Americano(string name, int price, MenuType menuType) : base(name, price, menuType) { }
+    public Americano(int id, string name, int price, MenuType menuType) : base(id, name, price, menuType) { }
 }
