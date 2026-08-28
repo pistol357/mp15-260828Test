@@ -5,6 +5,30 @@ public abstract class Menu
     protected int _price;
     protected MenuType _menuType;
 
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+    }
+
+    public int Price
+    {
+        get
+        {
+            return _price;
+        }
+    }
+
+    public MenuType MenuType
+    {
+        get
+        {
+            return _menuType;
+        }
+    }
+
     public Menu(string name, int price, MenuType menuType)
     {
         _name = name;
