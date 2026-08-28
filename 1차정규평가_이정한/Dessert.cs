@@ -6,11 +6,11 @@ public class Dessert : Menu
 
     public override int ReturnPrice()
     {
-        if(_orderCount >= 3)
+        if (_orderCount >= 3)
         {
-            return (int)(base.ReturnPrice() * DISCOUNT_RATE);
+            return (int)(_price * _orderCount * DISCOUNT_RATE);
         }
-        return base.ReturnPrice();
+        return _price * _orderCount;
     }
 
     public override void PrintMenuInfo()

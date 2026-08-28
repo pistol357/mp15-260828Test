@@ -54,10 +54,7 @@ public abstract class Menu
         _menuType = menuType;
     }
 
-    public virtual int ReturnPrice()
-    {
-        return _price * _orderCount;
-    }
+    public abstract int ReturnPrice();
 
     public virtual void PrintMenuInfo()
     {
