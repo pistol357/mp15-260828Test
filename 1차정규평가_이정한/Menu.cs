@@ -4,7 +4,7 @@ public abstract class Menu
     protected string _name;
     protected int _price;
     protected MenuType _menuType;
-    protected int _orderCount;
+    protected int _orderCount = 0;
 
     public string Name
     {
@@ -35,6 +35,11 @@ public abstract class Menu
         get
         {
             return _orderCount;
+        }
+
+        set
+        {
+            _orderCount = value;
         }
     }
 
