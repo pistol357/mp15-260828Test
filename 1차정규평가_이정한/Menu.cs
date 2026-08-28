@@ -35,4 +35,9 @@ public abstract class Menu
         _price = price;
         _menuType = menuType;
     }
+
+    public virtual int ReturnPrice()
+    {
+        return Price;
+    }
 }
