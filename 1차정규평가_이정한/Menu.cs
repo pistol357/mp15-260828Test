@@ -4,6 +4,7 @@ public abstract class Menu
     protected string _name;
     protected int _price;
     protected MenuType _menuType;
+    protected int _orderCount;
 
     public string Name
     {
