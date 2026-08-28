@@ -31,7 +31,7 @@ class Program
             if (action == (int)CustomerActionList.AddMenuToCart)
             {
                 int menuToCart = ConsoleInput.ReadIntInRange("장바구니에 담을 메뉴를 선택해주세요. : ", 1, MENU_COUNT);
-                int menuToCartCount = ConsoleInput.ReadIntAtLeast("몇 개 담을까요? : ", 0);
+                int menuToCartCount = ConsoleInput.ReadIntAtLeast("몇 개 담을까요? : ", 1);
                 cart.AddMenuToCart(menuList, menuToCart, menuToCartCount);
             }
             else if (action == (int)CustomerActionList.RemoveMenuFromCart)
@@ -39,7 +39,7 @@ class Program
                 if (!cart.IsCartEmpty())
                 {
                     int menuFromCart = ConsoleInput.ReadIntInRange("장바구니에서 뺄 메뉴를 선택해주세요. : ", 1, MENU_COUNT);
-                    int menuFromCartCount = ConsoleInput.ReadIntAtLeast("몇 개 뺄까요? : ", 0);
+                    int menuFromCartCount = ConsoleInput.ReadIntAtLeast("몇 개 뺄까요? : ", 1);
                     cart.RemoveMenuFromCart(menuList, menuFromCart, menuFromCartCount);
                 }
                 else
