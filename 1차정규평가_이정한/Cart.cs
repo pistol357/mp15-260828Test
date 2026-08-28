@@ -25,12 +25,26 @@ public class Cart<T> where T : Menu
             menu.OrderCount += menuCount;
         }
 
-        int cost = 0;
-        foreach(T item in _cart)
+        GetTotalCost();
+    }
+
+    public void RemoveMenuFromCart(MenuList menuList, int menuNumber, int menuCount)
+    {
+        T menu = (T)menuList.GetMenu(menuNumber - 1);
+        if (_cart.Contains(menu))
         {
-            cost += item.ReturnPrice();
+            menu.OrderCount -= menuCount;
+            if(menu.OrderCount == 0)
+            {
+                _cart.Remove(menu);
+            }
         }
-        _totalCost = cost;
+        else
+        {
+            Console.WriteLine($"장바구니에 {menu.Name}(이)가 없습니다.");
+        }
+
+        GetTotalCost();
     }
 
     public void ClearCart()
@@ -53,6 +67,16 @@ public class Cart<T> where T : Menu
     public bool IsCartEmpty()
     {
         return _cart.Count == 0;
+    }
+
+    public void GetTotalCost()
+    {
+        int cost = 0;
+        foreach (T item in _cart)
+        {
+            cost += item.ReturnPrice();
+        }
+        _totalCost = cost;
     }
 
     public void Pay(Cafe cafe, int moeny)
