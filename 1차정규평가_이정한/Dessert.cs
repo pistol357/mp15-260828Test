@@ -12,4 +12,9 @@ public class Dessert : Menu
         }
         return base.ReturnPrice();
     }
+
+    public override void PrintMenuInfo()
+    {
+        Console.WriteLine($"{Name} ({MenuType})  {Price}원 [3개 이상 구매 시 10% 할인]");
+    }
 }
