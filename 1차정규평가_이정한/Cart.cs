@@ -49,4 +49,28 @@ public class Cart<T> where T : Menu
         Console.WriteLine($"  합계 : {_totalCost}원");
         Console.WriteLine("----------------------------------------");
     }
+
+    public bool IsCartEmpty()
+    {
+        if( _cart.Count == 0 )
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void Pay(Cafe cafe, int moeny)
+    {
+        if (moeny < _totalCost)
+        {
+            Console.WriteLine("금액이 부족합니다.");
+        }
+        else
+        {
+            Console.WriteLine($"거스름돈 : {moeny - _totalCost}");
+            cafe.TotalSales += _totalCost;
+            cafe.OrderTimes++;
+            ClearCart();
+        }
+    }
 }

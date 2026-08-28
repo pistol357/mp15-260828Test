@@ -40,21 +40,10 @@ class Program
             }
             else if (action == (int)CustomerActionList.Pay)
             {
-                if(cart.TotalCost != 0)
+                if (!cart.IsCartEmpty())
                 {
-                    int pay = ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0);
-
-                    if (pay < cart.TotalCost)
-                    {
-                        Console.WriteLine("금액이 부족합니다.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"거스름돈 : {pay - cart.TotalCost}");
-                        cafe.TotalSales += cart.TotalCost;
-                        cafe.OrderTimes++;
-                        cart.ClearCart();
-                    }
+                    int money = ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0);
+                    cart.Pay(cafe, money);
                 }
                 else
                 {
