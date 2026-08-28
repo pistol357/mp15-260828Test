@@ -1,9 +1,18 @@
 ﻿
 public abstract class Menu
 {
+    protected int _id;
     protected string _name;
     protected int _price;
     protected MenuType _menuType;
+
+    public int ID
+    {
+        get
+        {
+            return _id;
+        }
+    }
 
     public string Name
     {
