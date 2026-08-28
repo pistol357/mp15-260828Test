@@ -9,6 +9,8 @@ class Program
 
     static void Main(string[] args)
     {
+        Cafe cafe = new Cafe();
+
         MenuList menuList = new MenuList();
         menuList.SetMenuListSize(MENU_COUNT);
         menuList.AddMenu(new Drink("아메리카노", 5000));
@@ -17,7 +19,7 @@ class Program
         menuList.AddMenu(new Dessert("티라미수", 3800));
         menuList.AddMenu(new Dessert("쿠키", 1000));
 
-        Cart cart = new Cart();
+        Cart<Menu> cart = new Cart<Menu>();
 
         while (true)
         {
@@ -25,7 +27,40 @@ class Program
             PrintCafeName();
             menuList.PrintMenuList();
             cart.PrintCart();
-            PrintCustomerAction(menuList, cart);
+            int action = PrintCustomerAction();
+
+            if (action == (int)CustomerActionList.AddMenuToCart)
+            {
+                int menuToCart = ConsoleInput.ReadIntInRange("장바구니에 담을 메뉴를 선택해주세요. : ", 1, 5);
+                int menuToCartCount = ConsoleInput.ReadIntAtLeast("몇 개 담을까요? : ", 0);
+                cart.AddMenuToCart(menuList, menuToCart, menuToCartCount);
+            }
+            else if (action == (int)CustomerActionList.ClearCart)
+            {
+                cart.ClearCart();
+            }
+            else if (action == (int)CustomerActionList.Pay)
+            {
+                int pay = ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0);
+
+                if (pay < cart.TotalCost)
+                {
+                    Console.WriteLine("금액이 부족합니다.");
+                }
+                else
+                {
+                    Console.WriteLine($"거스름돈 : {pay - cart.TotalCost}");
+                    cafe.TotalSales += cart.TotalCost;
+                    cafe.OrderTimes++;
+                    cart.ClearCart();
+                }
+            }
+            else if (action == (int)CustomerActionList.CloseCafe)
+            {
+                Console.WriteLine($"총 주문 건수 : {cafe.OrderTimes}");
+                Console.WriteLine($"총 매출액 : {cafe.TotalSales}");
+                return;
+            }
             ConsoleInput.Pause();
         }
     }
@@ -37,38 +72,10 @@ class Program
         Console.WriteLine("----------------------------------------");
     }
 
-    public static void PrintCustomerAction(MenuList menuList, Cart cart)
+    public static int PrintCustomerAction()
     {
         Console.WriteLine("1. 장바구니에 메뉴 담기   2. 장바구니 전체 비우기   3. 결제   4. 영업 종료");
         int action = ConsoleInput.ReadIntInRange("무엇을 원하시나요? : ", 1, 4);
-
-        if(action == (int)CustomerActionList.AddMenuToCart)
-        {
-            int menuToCart = ConsoleInput.ReadIntInRange("장바구니에 담을 메뉴를 선택해주세요. : ", 1, 5);
-            int menuToCartCount = ConsoleInput.ReadIntAtLeast("몇 개 담을까요? : ", 0);
-            cart.AddMenuToCart(menuList, menuToCart, menuToCartCount);
-        }
-        else if (action == (int)CustomerActionList.ClearCart)
-        {
-            cart.ClearCart();
-        }
-        else if (action == (int)CustomerActionList.Pay)
-        {
-            int pay = ConsoleInput.ReadIntAtLeast("받은 금액 : ", 0);
-
-            if(pay < cart.TotalCost)
-            {
-                Console.WriteLine("금액이 부족합니다.");
-            }
-            else
-            {
-                Console.WriteLine($"거스름돈 : {pay - cart.TotalCost}");
-                cart.ClearCart();
-            }
-        }
-        else if(action == (int)CustomerActionList.CloseCafe)
-        {
-
-        }
+        return action;
     }
 }
