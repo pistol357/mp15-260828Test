@@ -12,7 +12,7 @@ public class MenuList
         }
     }
 
-    public void SetMenuListSize(int size)
+    public MenuList(int size)
     {
         _menuList = new Menu[size];
     }
