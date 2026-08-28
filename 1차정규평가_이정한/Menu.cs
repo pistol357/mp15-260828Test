@@ -1,18 +1,9 @@
 ﻿
 public abstract class Menu
 {
-    protected int _id;
     protected string _name;
     protected int _price;
     protected MenuType _menuType;
-
-    public int ID
-    {
-        get
-        {
-            return _id;
-        }
-    }
 
     public string Name
     {
@@ -38,9 +29,8 @@ public abstract class Menu
         }
     }
 
-    public Menu(int id, string name, int price, MenuType menuType)
+    public Menu(string name, int price, MenuType menuType)
     {
-        _id = id;
         _name = name;
         _price = price;
         _menuType = menuType;
